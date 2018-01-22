@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./normalize.css">
+	<style type="text/css">
+		html{
+			background-image: url(./img/bg.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			box-sizing: border-box;
+			background: #eee;
+		}
+		.tip{
+			font-size: 0.5rem;
+			text-align: center;
+		}
+		.tip img{
+			width: 1rem;
+			vertical-align: middle;
+		}
+		#raffleInit{width: 6rem;height: 6rem;  position: relative;margin:1.5rem auto 1rem; }
+		#raffleInit .list{width: 2rem;height: 2rem;background: #999; float: left; font-size: 1rem; color: #fff; line-height: 2rem; text-align: center; position: absolute;
+			border: 0.1rem solid transparent;
+			box-sizing: border-box;
+		}
+		/*#raffleInit .list:nth-child(even){background: #7f7f7f}*/
+		#raffleInit .list1{left: 0px; top: 0; background-image: url(./img/6.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list2{ left: 2rem; top: 0; background-image: url(./img/2.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list3{ left: 4rem; top: 0; background-image: url(./img/3.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list4{ left: 4rem; top: 2rem; background-image: url(./img/6.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list5{ left: 4rem; top: 4rem; background-image: url(./img/4.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list6{ left: 2rem; top: 4rem; background-image: url(./img/5.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list7{ left: 0px; top: 4rem; background-image: url(./img/1.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list8{ left: 0px; top: 2rem; background-image: url(./img/2.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .start{width: 2rem;height: 2rem;background-image:url(./img/boss.png); background-size: contain; position: absolute; left: 2rem; top: 2rem; color: #fff; line-height: 2rem; text-align: center; font-size: 0.6rem; cursor: pointer;}
+		#raffleInit .start:hover{}
+		#raffleInit .list.active{ border: 0.1rem solid red;}
+	</style>
+	<style type="text/css">
+		.pic{
+			margin: 1.5rem 0;
+			font-size: 0.5rem;
+			display: none;
+		}
+		.pic p{
+			margin: 0;
+			margin-bottom: 0.3rem;
+			color: red;
+		}
+		.pic img{
+			width: 7.5rem;
+			animation:mymove 1s infinite;
+			-moz-animation:mymove 1s infinite; /* Firefox */
+			-webkit-animation:mymove 1s infinite; /* Safari and Chrome */
+			-o-animation:mymove 1s infinite; /* Opera */
+		}
+
+		@keyframes mymove
+		{
+		/*0% {transform:rotate(-5deg);}
+		25% {transform: rotate(0deg);}
+		50% {transform: rotate(5deg);}
+		75% {transform: rotate(0deg);}
+		100% {transform:rotate(-5deg);}*/
+		from {transform:rotate(-2deg);}
+		50% {transform: rotate(2deg);}
+		to {transform: rotate(-2deg);}
+		}
+
+		@-moz-keyframes mymove /* Firefox */
+		{
+		from {transform:rotate(-2deg);}
+		50% {transform: rotate(2deg);}
+		to {transform: rotate(-2deg);}
+		}
+
+		@-webkit-keyframes mymove /* Safari and Chrome */
+		{
+		from {transform:rotate(-2deg);}
+		50% {transform: rotate(2deg);}
+		to {transform: rotate(-2deg);}
+		}
+
+		@-o-keyframes mymove /* Opera */
+		{
+		from {transform:rotate(-2deg);}
+		50% {transform: rotate(2deg);}
+		to {transform: rotate(-2deg);}
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div id="random">
+		<!-- 九宫格 -->
+		<div id="raffleInit">
+		<div class="list list1 active"></div>
+		<div class="list list2"></div>
+		<div class="list list3"></div>
+		<div class="list list4"></div>
+		<div class="list list5"></div>
+		<div class="list list6"></div>
+		<div class="list list7"></div>
+		<div class="list list8"></div>
+		<div class="start">	</div>
+		<p></p></div>
+		<div style="text-align: center;" class="tip">
+			<img src="./img/loading.svg">
+			<span class="tip">正在抽奖...</span>
+		</div>
+		
+	</div>
+	
+	<div class="pic1 pic">
+		<p>恭喜获得：  与张总共饮美酒一杯</p>
+		<img src="./img/6.png">
+	</div>
+
+	<div class="pic2 pic">
+		<p style="margin-bottom: 0.2rem">恭喜获得：  东山珍珠岛明信片</p>
+		<img src="./img/2.png">
+	</div>
+
+	<div class="pic3 pic">
+		<p style="margin-bottom: 0.2rem">恭喜获得：  牛逼低调丸一盒</p>
+		<img src="./img/3.png">
+	</div>
+
+	<div class="pic4 pic">
+		<p>恭喜获得：  与张总共饮美酒一杯</p>
+		<img src="./img/6.png">
+	</div>
+
+	<div class="pic5 pic">
+		<p>恭喜获得：  强力闷骚膏一盒</p>
+		<img src="./img/4.png">
+	</div>
+
+	<div class="pic6 pic">
+		<p style="margin-bottom: 0.2rem">恭喜获得：  星河相亲角配对一次</p>
+		<img src="./img/5.png">
+	</div>
+
+	<div class="pic7 pic">
+		<p>恭喜获得：  365个中奖祝福</p>
+		<img src="./img/1.png">
+	</div>
+
+	<div class="pic8 pic">
+		<p style="margin-bottom: 0.2rem">恭喜获得：  东山珍珠岛明信片</p>
+		<img src="./img/2.png">
+	</div>
+
+	<script src="./jquery.js"></script>
+	<script src="./autoScale.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			console.log($);
+
+			//获取每个div    
+			var _list = document.querySelectorAll('.list');  
+			//获取开始按钮    
+			var _start = document.querySelector('.start');  
+			//定义一个开关，防止连续点击    
+			var btn = true;  
+			//开始按钮点击的时候，判断开关状态，然后执行抽奖的函数，参数为回调函数    
+			raffleInit(function(n){  
+			        // alert('恭喜你获得了：'+(n)+' 等奖');  
+			        n = n-1;
+			        $('#random').hide();
+			        $('.pic'+n).show();
+			        btn= !btn  
+			    });  
+			// _start.onclick = function(){  
+			//     if(!btn)return;  
+			//     raffleInit(function(n){  
+			//         // alert('恭喜你获得了：'+(n)+' 等奖');  
+			//         $('#random').hide();
+			//         $('.pic'+n).show();
+			//         btn= !btn  
+			//     });  
+			//     btn= !btn  
+			// }
+
+			function raffleInit(){  
+		    //随机数获取决定本次抽奖的奖项  
+		    var endnum = Math.round( Math.random()*7+1);  
+		    //回调函数  
+		    var cb =arguments[0]  
+		    var timer = null, //定时器  
+		    now = 0,  //当前div为选中状态的索引值  
+		    count = 0,  //总共跑了多少圈  
+		    startOff = true,  //是否结束本次抽奖开关  
+		    s = 60;   //speed，跑动的速度  
+		    //首先进来的时候，先清除一下定时器  
+		    clearInterval(timer)  
+		    timer = setInterval(function(){  
+		        //执行startGo函数  
+		        startGo();  
+		    },s);  
+		    //这是startGo函数内容  
+		    function startGo(){  
+		        //首先判断startOff状态，如果是false即为本次抽奖结束，然后执行回调函数，并清除定时器  
+		        if(!startOff){  
+		            cb(endnum+1)  
+		            clearInterval(timer);  
+		            count = 0,startOff = true,s = 200;  
+		            return false;  
+		        };  
+		        //让now变量累加  
+		        now++;  
+		        //当然不能一直加上去，当他超过_list长度时，重新回到0  
+		        now = now++%(_list.length);  
+		        //计算圈数  
+		        if(now %_list.length == 0) {  
+		            count++;     
+		        };  
+		        //循环把每个div的active选中样式去除  
+		        for(var i=0;i<_list.length;i++){  
+		            _list[i].classList.remove('active');  
+		        };  
+		        //给当前的div添加active选中样式  
+		        _list[now].classList.add('active');  
+		        //当跑完一圈并小于7圈的时候，把速度乘以一个小于1的小数，让他越来越小，达到加速效果，并递归调用自身  
+		        if(count>=1 && count<2){  
+		            clearInterval(timer);  
+		            s *= 0.96;  
+		            timer = setInterval(function(){  
+		                startGo();  
+		            },s);  
+		        };  
+		        //当跑完七圈的时候，我们把速度乘以一个大于1的小数，让他越来越慢。  
+		        if(count>2){  
+		            clearInterval(timer);  
+		            s *= 1.08;  
+		            timer = setInterval(function(){  
+		                startGo();  
+		            },s);  
+		            //如果速度达到260【如果要越来越慢，数字可以更大，比如300,340】，并且当前的now和刚开始随机取到的奖项相等，就停止本次抽奖，改变startOff状态  
+		            // console.log(s,now,endnum);
+		            if(s>=200 &&  (now+1 == endnum)){  
+		                startOff = false;  
+		            };  
+		                      
+		        };  
+		    };  
+			};     
+		}
+
+		
+	</script>
+</body>
+</html>
