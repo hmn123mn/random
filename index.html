@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <meta charset="UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <html>
 <head>
-	<title></title>
+	<title>星河抽奖</title>
 	<link rel="stylesheet" type="text/css" href="./normalize.css">
 	<style type="text/css">
 		html{
-			background-image: url(./img/bg.png);
-			background-repeat: no-repeat;
-			background-size: contain;
 			box-sizing: border-box;
-			background: #eee;
+			background: #e64239;
 		}
 		.tip{
 			font-size: 0.5rem;
@@ -20,27 +18,28 @@
 			width: 1rem;
 			vertical-align: middle;
 		}
-		#raffleInit{width: 6rem;height: 6rem;  position: relative;margin:1.5rem auto 1rem; }
-		#raffleInit .list{width: 2rem;height: 2rem;background: #999; float: left; font-size: 1rem; color: #fff; line-height: 2rem; text-align: center; position: absolute;
+		#raffleInit{width: 5.62rem;height: 5.62rem;  position: absolute; left: 0.9rem;top: 4.72rem; }
+		#raffleInit .list{width: 1.87rem;height: 1.87rem;background: #e64239; float: left; font-size: 1rem; color: #fff; line-height: 2rem; text-align: center; position: absolute;
 			border: 0.1rem solid transparent;
 			box-sizing: border-box;
+			border-radius: 0.2rem;
 		}
 		/*#raffleInit .list:nth-child(even){background: #7f7f7f}*/
-		#raffleInit .list1{left: 0px; top: 0; background-image: url(./img/6.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list2{ left: 2rem; top: 0; background-image: url(./img/2.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list3{ left: 4rem; top: 0; background-image: url(./img/3.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list4{ left: 4rem; top: 2rem; background-image: url(./img/6.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list5{ left: 4rem; top: 4rem; background-image: url(./img/4.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list6{ left: 2rem; top: 4rem; background-image: url(./img/5.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list7{ left: 0px; top: 4rem; background-image: url(./img/1.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .list8{ left: 0px; top: 2rem; background-image: url(./img/2.png);background-repeat: no-repeat;background-size: cover;}
-		#raffleInit .start{width: 2rem;height: 2rem;background-image:url(./img/boss.png); background-size: contain; position: absolute; left: 2rem; top: 2rem; color: #fff; line-height: 2rem; text-align: center; font-size: 0.6rem; cursor: pointer;}
+		#raffleInit .list1{left: 0px; top: 0; background-image: url(./img/1d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list2{ left: 1.87rem; top: 0; background-image: url(./img/3d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list3{ left: 3.74rem; top: 0; background-image: url(./img/2d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list4{ left: 3.74rem; top: 1.87rem; background-image: url(./img/3d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list5{ left: 3.74rem; top: 3.74rem; background-image: url(./img/4d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list6{ left: 1.87rem; top: 3.74rem; background-image: url(./img/1d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list7{ left: 0px; top: 3.74rem; background-image: url(./img/3d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .list8{ left: 0px; top: 1.87rem; background-image: url(./img/2d.png);background-repeat: no-repeat;background-size: cover;}
+		#raffleInit .start{width: 1.67rem;height: 1.67rem;background-image:url(./img/btn.png); background-size: contain; position: absolute; left: 1.97rem; top: 1.97rem; color: #fff; line-height: 2rem; text-align: center; font-size: 0.6rem; cursor: pointer;}
 		#raffleInit .start:hover{}
-		#raffleInit .list.active{ border: 0.1rem solid red;}
+		#raffleInit .list.active{ border: 0.1rem solid #ffed8b;}
 	</style>
 	<style type="text/css">
 		.pic{
-			margin: 1.5rem 0;
+			margin: 1rem 0;
 			font-size: 0.5rem;
 			display: none;
 		}
@@ -52,6 +51,7 @@
 		.pic img{
 			width: 7.5rem;
 			animation:mymove 1s infinite;
+			vertical-align: top;
 			-moz-animation:mymove 1s infinite; /* Firefox */
 			-webkit-animation:mymove 1s infinite; /* Safari and Chrome */
 			-o-animation:mymove 1s infinite; /* Opera */
@@ -90,75 +90,120 @@
 		to {transform: rotate(-2deg);}
 		}
 
+		.spin{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: #fff;
+			padding-top: 3rem;
+			text-align: center;
+			z-index: 99;
+		}
+
+		.spin img{
+			width: 1.5rem;
+		}
+
+	</style>
+	<style>
+		.container{
+			width: 7.5rem;
+			height: 12.05rem;
+			background-image: url(./img/bg1.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		.openPrice{
+			height: 100vh;
+			position: absolute;
+			width: 7.5rem;
+			padding-top: 3rem;
+			top: 0;
+			z-index: 99;
+			background: rgba(0, 0, 0, .8);
+		}
+		.openPrice img{
+			width: 7.5rem;
+			/* background: #fff; */
+		}
+		.priceContainer{
+			width: 7.5rem;
+			height: 12.05rem;
+			background-image: url(./img/bg3.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			position: relative;
+			display: none;
+			border-top: 1px solid transparent;
+		}
+		.priceContainer .priceText{
+			text-align: center;
+			color: #eb423b;
+			padding-top: 3rem;
+			font-size: 0.38rem;
+			font-weight: bold;
+			font-family: Arial, Helvetica, sans-serif;
+			margin-bottom: 0.85rem;
+		}
+		.priceContainer .priceImgBox{
+			/* width: 5.5rem; */
+			/* margin-top: 1rem; */
+			text-align: center;
+			vertical-align: middle;
+			width: 7.5rem;
+			height: 5.6rem;
+			display: table-cell;
+		}
+		.priceContainer .priceImgBox img{
+			max-width: 5.6rem;
+			max-height: 5.6rem;
+		}
 	</style>
 </head>
 <body>
-	
-	<div id="random">
-		<!-- 九宫格 -->
-		<div id="raffleInit">
-		<div class="list list1 active"></div>
-		<div class="list list2"></div>
-		<div class="list list3"></div>
-		<div class="list list4"></div>
-		<div class="list list5"></div>
-		<div class="list list6"></div>
-		<div class="list list7"></div>
-		<div class="list list8"></div>
-		<div class="start">	</div>
-		<p></p></div>
-		<div style="text-align: center;" class="tip">
-			<img src="./img/loading.svg">
-			<span class="tip">正在抽奖...</span>
+	<div class="spin">
+		<!-- <img src="./img/spining.svg" alt=""> -->
+	</div>
+	<div class="container">
+			<div id="random">
+				<!-- 九宫格 -->
+				<div id="raffleInit">
+					<div class="list list1"></div>
+					<div class="list list2"></div>
+					<div class="list list3"></div>
+					<div class="list list4"></div>
+					<div class="list list5"></div>
+					<div class="list list6"></div>
+					<div class="list list7"></div>
+					<div class="list list8"></div>
+					<div class="start"> </div>
+					<p></p>
+				</div>
+			
+			</div>
+	</div>
+
+	<div class="openPrice" style="display:none">
+		<img src="./img/openPrize.png" alt="" id="clickOpen">
+	</div>
+
+	<div class="priceContainer">
+		<p class="priceText"></p>
+		<div class="priceImgBox">
+			<img src="" alt="" class="priceImg">
 		</div>
 		
-	</div>
-	
-	<div class="pic1 pic">
-		<p>恭喜获得：  与张总共饮美酒一杯</p>
-		<img src="./img/6.png">
-	</div>
-
-	<div class="pic2 pic">
-		<p style="margin-bottom: 0.2rem">恭喜获得：  东山珍珠岛明信片</p>
-		<img src="./img/2.png">
-	</div>
-
-	<div class="pic3 pic">
-		<p style="margin-bottom: 0.2rem">恭喜获得：  牛逼低调丸一盒</p>
-		<img src="./img/3.png">
-	</div>
-
-	<div class="pic4 pic">
-		<p>恭喜获得：  与张总共饮美酒一杯</p>
-		<img src="./img/6.png">
-	</div>
-
-	<div class="pic5 pic">
-		<p>恭喜获得：  强力闷骚膏一盒</p>
-		<img src="./img/4.png">
-	</div>
-
-	<div class="pic6 pic">
-		<p style="margin-bottom: 0.2rem">恭喜获得：  星河相亲角配对一次</p>
-		<img src="./img/5.png">
-	</div>
-
-	<div class="pic7 pic">
-		<p>恭喜获得：  365个中奖祝福</p>
-		<img src="./img/1.png">
-	</div>
-
-	<div class="pic8 pic">
-		<p style="margin-bottom: 0.2rem">恭喜获得：  东山珍珠岛明信片</p>
-		<img src="./img/2.png">
 	</div>
 
 	<script src="./jquery.js"></script>
 	<script src="./autoScale.js"></script>
 	<script type="text/javascript">
+		$('.spin').show();
 		window.onload = function(){
-			console.log($);
+			$('.spin').fadeOut();
+			
 
 			//获取每个div    
 			var _list = document.querySelectorAll('.list');  
@@ -167,23 +212,47 @@
 			//定义一个开关，防止连续点击    
 			var btn = true;  
 			//开始按钮点击的时候，判断开关状态，然后执行抽奖的函数，参数为回调函数    
-			raffleInit(function(n){  
+			_start.onclick = function(){  
+			    if(!btn)return;  
+			    raffleInit(function(n){  
 			        // alert('恭喜你获得了：'+(n)+' 等奖');  
-			        n = n-1;
-			        $('#random').hide();
-			        $('.pic'+n).show();
+							n = n - 1;
+			        $('.openPrice').fadeIn();
+			        // $('.pic'+n).show();
+							$('#clickOpen').click(function(){
+								$('.container').hide();
+								$('.openPrice').fadeOut();
+								$('.priceContainer').fadeIn();
+								if(n==1){
+									$('.priceText').html('与张总共饮美酒一杯');
+									$('.priceImg')[0].src = './img/6.png';
+								}else if(n==2){
+									$('.priceText').html('东山珍珠岛明信片');
+									$('.priceImg')[0].src = './img/2.png';
+								}else if (n == 3) {
+									$('.priceText').html('牛逼低调丸一盒');
+									$('.priceImg')[0].src = './img/3.png';
+								} else if (n == 4) {
+									$('.priceText').html('与张总共饮美酒一杯');
+									$('.priceImg')[0].src = './img/6.png';
+								} else if (n == 5) {
+									$('.priceText').html('强力闷骚膏一盒');
+									$('.priceImg')[0].src = './img/4.png';
+								} else if (n == 6) {
+									$('.priceText').html('星河相亲角配对一次');
+									$('.priceImg')[0].src = './img/5.png';
+								} else if (n == 7) {
+									$('.priceText').html('365个中奖祝福');
+									$('.priceImg')[0].src = './img/1.png';
+								} else if (n == 8) {
+									$('.priceText').html('365个中奖祝福');
+									$('.priceImg')[0].src = './img/1.png';
+								}
+							});
 			        btn= !btn  
 			    });  
-			// _start.onclick = function(){  
-			//     if(!btn)return;  
-			//     raffleInit(function(n){  
-			//         // alert('恭喜你获得了：'+(n)+' 等奖');  
-			//         $('#random').hide();
-			//         $('.pic'+n).show();
-			//         btn= !btn  
-			//     });  
-			//     btn= !btn  
-			// }
+			    btn= !btn  
+			}
 
 			function raffleInit(){  
 		    //随机数获取决定本次抽奖的奖项  
